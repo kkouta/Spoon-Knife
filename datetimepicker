@@ -1,0 +1,60 @@
+
+ここが条件の入力欄
+layouts/v7/modules/Settings/Workflows/AdvanceFilterCondition.tpl
+
+下の351行目の場所でクリック時にカレンダーが呼び出されるようになっている。
+枠の右側のカレンダーマークは別の場所
+layouts/v7/modules/Vtiger/resources/AdvanceFilter.js
+vtUtils.registerEventForDateFields(fieldSpecificUi);
+
+活動の開始日時もすべて上のカレンダー呼び出しの関数を通っている。
+fieldSpecificUi.has('input.dateField').length > 0これをクリアできればカレンダーが表示される。
+
+layouts/v7/modules/Vtiger/resources/Field.js
+476のgetui関数のところでdateFieldクラスを付与している
+上の463どういう意味
+
+ライブラリを追加して日時を入力できるようにする。
+modules/Settings/Workflows/views/Edit.phpこのファイルの183行目あたりでワークフロウで使うライブラリーを読みこんでいる。
+libraries/jquery/の中にいろいろライブラリがあるからそこに追加する。
+
+修正方針としてはRAWテキストのボタンの横にカレンダーマークなどを置いておいてそこからdatetimepickerを呼び出して入力できるようにする。
+
+とりあえずライブラリの追加から
+
+河合さんへの質問の回答
+Vtiger_Field_Js('Vtiger_Date_Field_Js',{},{
+これはVtiger_Field_Jsが継承元であり('Vtiger_Date_Field_Js',というクラスを新しく作っている。
+
+
+hoge直す
+
+
+ '~/libraries/jquery/bootstrapswitch/js/bootstrap-switch.min.js',
+			'~libraries/jquery/jquery.datepick.package-4.1.0/jquery.datepick.js',
+			'~libraries/jquery/datetimepicker/jquery.datetimepicker.full.js',
+libraries/jquery/datetimepicker/jquery.datetimepicker.full.js
+
+開始日時の場合を探してその時だけdatetimepickerを表示するようにしたいけど見つからない。
+
+
+
+
+
+console.log(document.getElementById("datetimepicker").value);で値が渡されている。しかしdatetimepickerの処理が終わらないため下に書いても一生処理は行われない。
+非同期処理が必要かもしれない。
+
+                         document.getElementById("inputElement").textContent = document.getElementById("datetimepickeraaaaaaaaaa").value;
+
+
+tplのほうに記述すると最初に処理が実行されてしまう。
+jsのほうに記述しなければ内ら
+
+container = thisInstance.getContainer();
+ここでセレクタの指定をしている。
+そこをポップアップの中のセレクタを指定しないといけない。
+
+
+'DOMContentLoaded',
+中身が解析される前に表示しているためgetbyidでも中身がundefinedになってしまう。
+それを回避するために、処理が終わった状態のものを持ってくるように書かなくてはならない。
