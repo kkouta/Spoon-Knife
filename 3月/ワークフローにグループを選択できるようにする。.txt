@@ -1,0 +1,22 @@
+vtiger_group2grouprel                     |
+| vtiger_group2role                         |
+| vtiger_group2rs                           |
+| vtiger_groups
+
+
+ vtiger_user2mergefields                   |
+| vtiger_user2role                          |
+| vtiger_user_module_preferences            |
+| vtiger_users                              |
+| vtiger_users2group                        |
+| vtiger_users_last_import                  |
+| vtiger_users_seq
+
+vtiger_glacct                             |
+| vtiger_glacct_seq
+
+
+
+
+/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Settings/Groups/DetailView.tplの48を参考にグループのメンバーのメールアドレスととってくる。
+次にワークフローのメール送信の部分でどこから送っているのかを確かめた後にその送信先に上記のコードを足してグループのメンバーに送信できるようにする。

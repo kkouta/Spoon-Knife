@@ -1,0 +1,35 @@
+
+
+Dear $contacts-firstname$ $contacts-lastname$,
+As our customer, you can be assured of getting excellent support from our team. I would like to take this opportunity to introduce the portal we have setup for valuable customers like you. You can submit questions/issues via the portal, see past issues and responses. In addition, Portal provides you access to our knowledge base and documents we shared with you in the past.
+$URL$ to login to the portal, with the credentials below.
+Your Username: $login_name$
+Your Password: $password$
+Thank you,
+$contacts-smownerid$
+Powered By F-RevoCRM
+
+
+
+私たちからお客様へ優れたサポートを提供することを保証いたします。
+この機会に、貴重なお客様のために設置したポータルをご紹介させていただきたいと思います。
+このポータルでは、質問や問題を提出したり、過去の問題や回答を確認したりすることができます。
+また、当社のデータベースや過去にお客様と共有したドキュメントにアクセスすることができます。
+
+
+
+いつも弊社サービスをご利用いただきありがとうございます。
+
+本メールは、弊社カスタマーポータルへの招待メールとなります。
+カスタマーポータルでは、お問い合わせ管理や、過去のFAQと回答をご確認いただけます。
+ポータルへのアクセスは本メールに記載のURL、ID、パスワードを使いログインしてください。
+
+
+＜＜＜もう少し意訳してメールの文章を作る。＞＞＞
+
+
+Contacts.phpの1514のcontentsの中の
+queryのvtiger_emailtemplates.bodyを用いて変更
+
+
+http://192.168.10.99/index.php?module=EmailTemplates&view=Detail&record=10&app=TOOLS

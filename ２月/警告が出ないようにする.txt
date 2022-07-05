@@ -1,0 +1,36 @@
+Object.defineProperty(window, 'onbeforeunload', {
+	set(newValue) {
+	if (typeof newValue === 'function') window.onbeforeunload = null;
+	}
+});
+
+
+
+/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Calendar/resources/Edit.js
+
+				modalContainer.on('click', '.onlyThisEvent', function() {
+					window.onbeforeunload = null;
+					recurringEditMode.val('current');
+					app.helper.hideModal();
+					form.vtValidate({
+						submitHandler : function() {
+							return true;
+						}
+					});
+					form.submit();
+				});
+				modalContainer.on('click', '.futureEvents', function() {
+					window.onbeforeunload = null;
+					recurringEditMode.val('future');
+					app.helper.hideModal();
+					form.vtValidate({
+						submitHandler : function() {
+							return true;
+						}
+					});
+					form.submit();
+				});
+				modalContainer.on('click', '.allEvents', function() {
+					window.onbeforeunload = null;
+					recurringEditMode.val('all');
+					app.helper.hideModal();

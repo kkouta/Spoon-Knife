@@ -1,0 +1,37 @@
+            {vtranslate('LBL_NO')} {vtranslate($MODULE_NAME, $MODULE_NAME)} {vtranslate('LBL_MATCHED_THIS_CRITERIA')}
+TopPotentialsContents.tpl
+DashBoardWidgetContents.tpl
+で検索すると出てくるのが案件とトップ案件の部分
+この＄DATAと＄MODULEが０になってしまっているのでうまく表示されない
+
+
+modules/Potentials/dashboards/GroupedBySalesPerson.php
+/home/kkanno/develop/F-RevoCRM/modules/Potentials/dashboards/TopPotentials.php
+
+MYSQLの構文がおかしい
+
+
+デーブル一覧
+vtiger_potential
+vtiger_crmentity
+vtiger_users
+vtiger_groups
+vtiger_sales_stage
+
+ほしいのは
+案件段階
+グループ名
+
+
+案件トップ
+＄MODELSの中身がきちんと入るか確認
+テーブル一覧
+vtiger_potential
+vtiger_crmentity
+
+
+
+SELECT vtiger_crmentity.crmid, vtiger_potential.amount, vtiger_potential.potentialname, vtiger_potential.related_to FROM vtiger_potential INNER JOIN vtiger_crmentity ON vtiger_potential.potentialid = vtiger_crmentity.crmid
+
+
+SELECT crmid, amount, potentialname, related_to FROM vtiger_potential INNER JOIN vtiger_crmentity ON vtiger_potential.potentialid = vtiger_crmentity.crmid

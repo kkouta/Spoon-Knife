@@ -1,0 +1,6 @@
+変えられるのは色だけにして他は編集ができないようにする。
+
+
+/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Calendar/resources/Calendar.js
+ここがセレクトタグの中が変換されていない原因のところかもしれない。
+

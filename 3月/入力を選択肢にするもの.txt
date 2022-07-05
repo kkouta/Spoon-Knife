@@ -1,0 +1,4 @@
+入力に合わせて違うaddclassの関数を読み込むようになっている。
+その場所を探してカレンダーのやつを埋め込む。
+
+/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Vtiger/resources/AdvanceFilter.js

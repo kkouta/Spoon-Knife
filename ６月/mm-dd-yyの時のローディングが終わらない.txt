@@ -1,0 +1,25 @@
+Events_date_start,due_dateあたりにハイツはずのデータがうまく入っていない。ここでエラーが起きているのかも
+他の個所もおそらくうまく入っていないためエラーが起きている。入れるところを直せば修正完了
+
+"DateTime::__construct(): Failed to parse time string (30-2022-05 ) at position 0 (3): Unexpected character"（エラーのほう）
+"[{"id":"329","visibility":"Public","activitytype":"\u4f1a\u8b70","status":"Held","recurringcheck":false,"title":"\uff4d\uff4d\uff44\uff44\uff59\uff59 - (\u5b8c\u4e86)","url":"javascript:Calendar_Calendar_Js.editCalendarEvent(329,)","start":"2022-06-01 02:00:00","end":"2022-06-01 02:30:00","className":null,"allDay":false,"color":"#65c1cf","textColor":"black","module":"Events","userid":"1","fieldName":"date_start,due_date","conditions":"","assigned_user_id":"\u30b7\u30b9\u30c6\u30e0\u7ba1\u7406\u8005 ","parent_id":"","location":"","description":""},{"id":"330","visibility":"Public","activitytype":"\u96fb\u8a71","status":"Planned","recurringcheck":false,"title":"mmddyy\u30c6\u30b9\u30c8 - (\u8a08\u753b\u6e08\u307f)","url":"javascript:Calendar_Calendar_Js.editCalendarEvent(330,)","start":"2022-06-03 00:00:00","end":"2022-06-03 00:30:00","className":null,"allDay":false,"color":"#65c1cf","textColor":"black","module":"Events","userid":"1","fieldName":"date_start,due_date","conditions":"","assigned_user_id":"\u30b7\u30b9\u30c6\u30e0\u7ba1\u7406\u8005 ","parent_id":"","location":"","description":""}]"（正しいほう）
+
+
+
+Calender.jsの298らへんでphpにpostしているためここでdataに代入している？php側の入力が間違っているのかもしてない。
+ここのdataをどこからコールバックして設定しているのかがわからない。
+
+
+
+var requestParams の
+						'module': app.getModuleName(),
+						'action': 'Feed',
+						'mode': 'batch',
+						'feedsRequest': activeFeedsRequestParams
+この情報を元にpostの情報を持ってきている。
+modules/Calendar/actions/Feed.phpの18行目あたりから持ってきている。
+action関係はmoduleの各モジュール内のactionファイルの中に入っていることが多い。
+その中のmodeとfeedrequestなどからpost先の場所を特定していく。
+
+
+

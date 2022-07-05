@@ -1,0 +1,36 @@
+<div class="target">test</div>
+<div class="target">testt</div>
+<div class="target">testtt</div>
+<div class="target">testttt</div>
+<div class="target">testtttt</div>
+なので以下のようにする。
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+<script>
+$(function(){
+    var txt = 'testtt';
+    var elem = null;
+    $('.target:contains('+txt+')').each(function(){
+        if($(this).text() == txt) elem = $(this);
+    });
+    elem.text('match!!');
+})
+</script>
+
+
+/home/kkanno/develop/F-RevoCRM/pkg/vtiger/modules/Webforms/layouts/v7/modules/Settings/Webforms/resources/Edit.js
+
+229のセレクタの部分が二つのものを持ってこないようにする
+上記のcontainsのフィルターで完全一致させる方法を模索中
+
+
+

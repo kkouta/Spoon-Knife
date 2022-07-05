@@ -1,0 +1,29 @@
+Remote WSL
+
+Git graph
+
+Gitlens
+
+Git history 
+
+をインストール（historyはどちらでも）(VScodeの拡張機能)
+
+ 
+・gitのユーザー登録をterminalで行う。
+　　メールアドレスとかユーザー名の
+・git clone （シンキングリードのcodeボタンの下のコピーする箇所）
+・git remote -v
+で確認
+fetchと
+
+bitbuckerの時も同じ感じでできる。
+ssh接続してcloneしてもいいし
+同じブランチに乗せたいなら
+git remote add 名前　(cloneのurl)
+でうまいことすることができる。
+
+
+
+
+
+

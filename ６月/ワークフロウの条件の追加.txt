@@ -1,0 +1,40 @@
+値の追加のファイルの呼び出しのを二回呼び出したらどうなるのか？
+
+これを次回はやる
+layouts/v7/modules/Settings/Workflows/FieldExpressions.tpl
+これが値の追加のファイル
+layouts/v7/modules/Settings/Workflows/AdvanceFilterCondition.tpl
+これが
+
+
+まずはいずれkと等しいのモジュールを作る。
+
+
+inputElement dateField form-control row-fluid validate[funcCall[Vtiger_Base_Validator_Js.invokeValidation]]
+getPopupUi datetime inputElement row-fluid validate[funcCall[Vtiger_Base_Validator_Js.invokeValidation]]
+
+
+入力をカレンダー形式の選択から選ぶことができるようにする。
+
+
+fieldUiHolderがあるとカレンダーの表示にすることができる
+/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Settings/Workflows/resources/Edit.js
+ここでクリック時の処理を行っている。
+on(click,)
+
+dateField ここでカレンダーが出てくるようになる。
+datetime 
+ form-control
+datetime
+fieldSpecificUi.has('input.dateField').lengthが日付を扱う項目の時はすべて１になるようにする必要がある。
+dateFieldをクラスに持つことができればカレンダーを出せる。
+
+各項目（完了予定日など）がきちんと日付の項目選択になるように修正する。
+
+
+
+
+780カレンダーjs
+
+
+

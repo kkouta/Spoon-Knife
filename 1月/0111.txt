@@ -1,0 +1,35 @@
+ヘッダーの調整
+画面の大きさが一定よりも小さいときにうまく文字がたたまれて省略されるようにする。
+一番小さいスマホで動作すればいい
+
+どこかに＞や＆nbsbのようなのがあったファイルで style="float:left;"で横並びにしてみる。
+そのあとに領域を超えたときに...になるように設定
+
+領域の高さを固定にしてそこからはみ出たら省略するようにする
+
+javascriptは/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Users/resources/Field.js
+HTMLのほうは/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Settings/Vtiger/ModuleHeader.tpl
+
+
+<div class="col-lg-7 col-md-7 pull-left textOverflowTest">
+			<div class="textOverflowTestflexd">
+
+.textOverflowTest{
+  overflow:hidden;
+	width: 600px;
+	white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis; /* Safari */
+	-o-text-overflow: ellipsis;
+}
+.textOverflowTestflex{
+  position:relative;
+}
+.textOverflowTestflexd{
+}
+
+親クラスにrelativeと子クラスにabsolutoを追加することで改行されないようにし
+
+
+
+

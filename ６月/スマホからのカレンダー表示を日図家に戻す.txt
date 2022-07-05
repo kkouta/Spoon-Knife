@@ -1,0 +1,6 @@
+href="index.php?module=Calendar&view=Calendar&lastViewDate=default"
+
+
+おそらくurlの場合分けによってそれぞれの表示形式が割り当てられてしまっている。
+
+defaultView: ($(window).width() > 1020 ? userDefaultActivityView : 'agendaDay'),

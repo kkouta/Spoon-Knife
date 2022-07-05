@@ -1,0 +1,58 @@
+まずは入力欄のtplを探す。その場所に下のものを入れ込む。
+
+
+$_SESSION['name'] = "カニモモンガ";
+
+
+
+<?php
+//書き込み用php
+//index.php
+//セッションの開始（一番最初に記述）
+session_start();
+//セッション[name]にデータを保存する
+$_SESSION['name'] = "カニモモンガ";
+echo "データのセーブが終わりました。<br>
+<a href='./test.php'>こちらで確認できます。";
+?>
+
+<?php
+//読み込み用php
+//test.php
+//セッションの開始（一番最初に記述）
+session_start();
+//セッション[name]から読み取る
+$name = $_SESSION['name'];
+//出力
+echo $name ."さん、ようこそ！";
+?>
+
+
+/home/kkanno/develop/F-RevoCRM/modules/Vtiger/actions/Save.php
+の52行のところで保存後のurlを決定している。ただしここにひとつ前のurlを充てるようにするとここの関数の前にもう一つurlが割り当てられているためうまくいかない。
+appの割り当てをしているところより前にこのコードを書かないとうまくいかない。
+
+リファエラー
+$_SERVER['REQUEST_URI']　　現在のurl
+$_SERVER['HTTP_REFERER']　 
+
+$preurl = $_SERVER['HTTP_REFERER'];
+			if(strpos($preurl,'module=Contacts&view=Edit&app=PROJECT') && strpos($_SERVER['REQUEST_URI'],'module=Contacts&view=Edit&app=PROJECT')){
+				$loadUrl = $preurl;
+
+
+ひとつ前のurlに戻るのは少し大変かもしれないから新規作成に飛ぶようにしてそこまでデータを保持しているように変更すればいいのでは？
+顧客担当者のリンクから飛んだのかの判断をどうするのか？
+
+一番簡単なのはurlが振り分けられる前に前のものを取得することかも
+
+jsのほうならうまくいく
+console.log(document.referrer);で前回のurlを取得できる。
+
+
+
+
+			$raw = file_get_contents('php://input'); // POSTされた生のデータを受け取る
+			$data = json_decode($raw); // json形式をphp変数に変換
+			$preurl = $data;
+

@@ -1,0 +1,18 @@
+Calendar_Calendar_Js.showCreateEventModal();追加ボタン
+Calendar_Calendar_Js.copyCalendarEvent('330',false);
+
+
+編集の時もコピーの時もエンター連打で処理はすべて行っている。
+編集時は上書きをたくさん行っているだけだから重複の予定ができることはないだけ
+
+
+					let savetagname = document.getElementsByName('saveButton');
+					if(savetagname.getAttribute('disabled')='disabled'){
+						//console.log("イベント中止中");
+						//form.preventDefault()
+					}
+					//console.log("イベント中止中");
+
+
+
+

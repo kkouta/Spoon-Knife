@@ -1,0 +1,67 @@
+おそらくデータベースから持ってきているためなかなか難しい
+
+
+vtiger_relatedlists                       |
+| vtiger_relatedlists_rb                    |
+| vtiger_relatedlists_seq                   |
+| vtiger_relcriteria                        |
+| vtiger_relcriteria_grouping
+
+
+/home/kkanno/develop/F-RevoCRM/layouts/v7/lib/jquery/select2/select2.js
+の363らへんで要素に値を入れている。
+
+
+
+
+resultの中にモジュールの種類を入れる必要がある。
+
+
+resultsのidからモジュールの名前をとってくる？
+
+
+///////jsのほうにsliceで間にモジュール名入れるように直しておく。!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+,indx=s.indexOf("-"),node1=s.slice(0,indx),node2=node1+"モジュレ"+s.slice(indx),e.append(node2).append("-----------bbbbbb")
+
+
+switch(node1.match(idkey)){
+                                case('account'):
+                                    modulename_atlist='Accounts';
+                                    break;
+                                case('contact'):
+                                    modulename_atlist='Contacts';
+                                    break;
+                            }
+
+
+
+	public static function getInstanceandmodulenameFromFieldObject(Vtiger_Field $fieldObj) {
+		$fileFieldModelandmodule = Vtiger_Field_Model::getInstanceFromFieldObject($fileNameFieldModel);
+		wordwrap($fileFieldModelandmodule,)
+
+
+		return $fieldModel;
+	}
+
+
+
+
+
+
+get("name")にすると文字の変換前の名前が出てくる。
+理想形は
+
+
+/home/kkanno/develop/F-RevoCRM/modules/Vtiger/models/Field.phpのところで編集したものを戻り値にしたい
+どういう関係なのかを考える。
+
+
+
+
+
+
+
+
+
+

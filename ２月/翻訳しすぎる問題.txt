@@ -1,0 +1,8 @@
+vtiger_def_org_field
+
+vtiger_field
+
+ vtiger_field_seq
+
+vtiger_language_rules ここが翻訳の欄
+

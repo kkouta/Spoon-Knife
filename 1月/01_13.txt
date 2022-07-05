@@ -1,0 +1,126 @@
+年齢の表示
+/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Contacts/SummaryViewWidgets.tpl
+
+データベースでCONTACTの中身を検索
+select * from vtiger_contactdetails;顧客の情報がある。
+
+ユーザーの詳細画面の/home/kkanno/develop/F-RevoCRM/layouts/v7/modules/Vtiger/DetailViewBlockView.tpl
+
+
+ユーザーや顧客担当者に追加させるのではなくワークフローに年齢を出す機能を追加する。
+顧客の誕生日を取得してmodules/com_vtiger_workflow/expression_engine/VTExpressionEvaluater.incのageのランを変更する。
+データベースから持ってくるしかない。
+顧客ごとに適用させるにはほかのワークフローの個所を参照してデータベースからの持ってくる方法を考える。
+
+
+
+
+
+
+| vtiger_customaction                       |
+| vtiger_customerdetails                    |
+| vtiger_customerportal_fields              |
+| vtiger_customerportal_prefs               |
+| vtiger_customerportal_relatedmoduleinfo   |
+| vtiger_customerportal_settings            |
+| vtiger_customerportal_tabs                |
+| vtiger_customview                         |
+| vtiger_customview_seq                     |
+| vtiger_cv2group                           |
+| vtiger_cv2role                            |
+| vtiger_cv2rs
+
+
+| vtiger_blocks                             |
+| vtiger_blocks_seq                         |
+| vtiger_calendar_default_activitytypes     |
+| vtiger_calendar_default_activitytypes_seq |
+| vtiger_calendar_user_activitytypes        |
+| vtiger_calendar_user_activitytypes_seq    |
+| vtiger_calendarsharedtype                 |
+| vtiger_calendarsharedtype_seq             |
+| vtiger_callduration                       |
+| vtiger_callduration_seq                   |
+| vtiger_campaign                           |
+| vtiger_campaignaccountrel                 |
+| vtiger_campaigncontrel                    |
+| vtiger_campaignleadrel                    |
+| vtiger_campaignrelstatus                  |
+| vtiger_campaignrelstatus_seq              |
+| vtiger_campaignscf                        |
+| vtiger_campaignstatus                     |
+| vtiger_campaignstatus_seq                 |
+| vtiger_campaigntype                       |
+| vtiger_campaigntype_seq                   |
+| vtiger_carrier                            |
+| vtiger_carrier_seq                        |
+| vtiger_cntactivityrel                     |
+| vtiger_contactaddress                     |
+| vtiger_contactdetails                     |
+| vtiger_contactscf                         |
+| vtiger_contactsubdetails                  |
+| vtiger_contpotentialrel                   |
+| vtiger_contract_priority                  |
+| vtiger_contract_priority_seq              |
+| vtiger_contract_status                    |
+| vtiger_contract_status_seq                |
+| vtiger_contract_type                      |
+| vtiger_contract_type_seq                  |
+| vtiger_convertleadmapping                 |
+| vtiger_convertpotentialmapping            |
+| vtiger_crmentity                          |
+| vtiger_crmentity_seq                      |
+| vtiger_crmentity_user_field               |
+| vtiger_crmentityrel                       |
+| vtiger_crmsetup                           |
+| vtiger_cron_task                          |
+| vtiger_currencies                         |
+| vtiger_currencies_seq                     |
+| vtiger_currency                           |
+| vtiger_currency_decimal_separator         |
+| vtiger_currency_decimal_separator_seq     |
+| vtiger_currency_grouping_pattern          |
+| vtiger_currency_grouping_pattern_seq      |
+| vtiger_currency_grouping_separator        |
+| vtiger_currency_grouping_separator_seq    |
+| vtiger_currency_info                      |
+| vtiger_currency_info_seq                  |
+| vtiger_currency_symbol_placement          |
+| vtiger_currency_symbol_placement_seq      |
+| vtiger_customaction                       |
+| vtiger_customerdetails                    |
+| vtiger_customerportal_fields              |
+| vtiger_customerportal_prefs               |
+| vtiger_customerportal_relatedmoduleinfo   |
+| vtiger_customerportal_settings            |
+| vtiger_customerportal_tabs                |
+| vtiger_customview                         |
+| vtiger_customview_seq                     |
+| vtiger_cv2group                           |
+| vtiger_cv2role                            |
+| vtiger_cv2rs                              |
+| vtiger_cv2users                           |
+| vtiger_cvadvfilter                        |
+| vtiger_cvadvfilter_grouping               |
+| vtiger_cvcolumnlist
+
+
+ com_vtiger_workflow_activatedonce         |
+| com_vtiger_workflow_tasktypes             |
+| com_vtiger_workflow_tasktypes_seq         |
+| com_vtiger_workflows                      |
+| com_vtiger_workflows_seq                  |
+| com_vtiger_workflowtask_queue             |
+| com_vtiger_workflowtasks                  |
+| com_vtiger_workflowtasks_entitymethod     |
+| com_vtiger_workflowtasks_entitymethod_seq |
+| com_vtiger_workflowtasks_seq              |
+| com_vtiger_workflowtemplates
+
+mysql> SELECT vtiger_emailtemplates.body FROM vtiger_notificationscheduler 
+INNER JOIN vtiger_emailtemplates ON vtiger_emailtemplates.templateid=vtiger_notificationscheduler.notificationbody WHERE schedulednotificationid=5;
+
+
+
+データベースにアクセスしてタグの一覧を参照
+それが選ばれたらそれがあるノアkを見る

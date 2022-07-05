@@ -1,0 +1,157 @@
+方針
+
+defaultdayにstartdayを入れても最初から1964年になってしまうため確認しようがない。
+defaultdayに入れた後に更新でまた1964年に上書きされないようにする
+
+jsでdefaultの値を持ってきてもその時点ではstartdayは1864年になってしまっている。
+phpのsaveほうでurlにくっつけているからjsでも持ってくることができる。
+defaultに日付を入れると次の表示の日付を指定できる。
+横矢印の時に入れ込むようにする。ー＞日付を調べられればそのまま代入できるんじゃない？
+
+
+
+
+phpファイルのほうの予定を聞きに行っているからそこで表示してある日付の一番最初をヘッダーに表示してあげるようにする。
+date.php
+calendar.phpあたりが怪しいかな。
+
+
+
+
+ここに表示してあるカレンダーの表紙の一番最初の日付が入っている。
+var lastviewday =Calendar_Calendar_Js.datenowdisplayed;
+
+これをurlにのっけてhistory.replaceStateで現在のurlを更新し続けるようにする
+この方法は毎回リロードがかからないようになっている。
+現在のurlをとってきてそれの最後の部分を切り取ってうまいこと入れるようにできれば完了
+
+URLにのっけても画面の遷移先はphpのほうで決定される。
+そのために週の遷移のたびにURLに日付を載せてそれをlocation.hrefでとってきてそれをdefaultdateに入れるようにする。
+
+
+
+週なのか月なのかのタイプの属性も持たせたい
+タイプはライブラリのほうでしかわからないためヘッダーの日付の二番目以降がnullであるかどうかなどで判断する。
+
+
+fc-day-header fc-widget-header fc-mon
+fc-day-header fc-widget-header fc-mon fc-past
+
+http://192.168.10.99/index.php?module=Calendar&view=Calendar&lastRecordDate=2022-02-18
+
+
+グーグルカレンダーとアップルのほうのカレンダーの共有化
+
+大体は終わり
+
+月の場合だけ週や日付の時のlastviewdateを持ってきている。
+これを隣の月に移動したときに更新するようにする。
+月に含まれる日付のすべてを持ってきてそこに引き継いだlastviewdateが含まれているかの確認
+
+
+完成
+この後は宮本君のプルリクとコンフリクトが起きないように修正して提出
+
+
+
+userDefaultActivityViewがユーザーの設定した日付項目
+共有カレンダーの画面で更新ボタンを押すと個人カレンダーに行ってしまう。
+
+
+http://192.168.10.99/index.php?module=Calendar&view=Calendar&lastVIewDate=2022-05-30&Viewtype=week
+http://192.168.10.99/index.php?module=Calendar&view=Calendar&lastVIewDate=2022-05-30&Viewtype=week
+
+
+ここのviewのところにsharealenderなどの情報を入れるようにすれば何とかなる
+
+
+
+
+
+			},
+			viewRender: function (view, element) {
+				var previousurl = document.referrer;
+				var URL_Serarch_view = new URLSearchParams(location.search);
+				var lastviewtype = URL_Serarch_view.get('view');
+				console.log(previousurl.substring(previousurl.indexOf('lastVIewDate=')+13,previousurl.indexOf('astVIewDate=')+22));
+				var previousday = previousurl.substring(previousurl.indexOf('lastVIewDate=')+13,previousurl.indexOf('astVIewDate=')+22);
+				if(document.getElementsByClassName('fc-day-header').item(1)==null){
+					if(document.getElementsByClassName('fc-day-header').item(0)){
+						console.log(previousurl.substring(previousurl.indexOf('&view=')+4,previousurl.indexOf('&view=')+8));
+						//if(previousurl.substring(previousurl.indexOf('&view='),previousurl.indexOf('&view=')))
+						lastviewday =document.getElementsByClassName('fc-day-header').item(0).dataset.date;
+						history.replaceState('', '','index.php?module=Calendar&view='+ lastviewtype +'&lastVIewDate=' + lastviewday + "&Viewtype=day");
+						
+					}
+					else{
+						history.replaceState('', '','index.php?module=Calendar&view='+ lastviewtype +'&lastVIewDate=' + "&Viewtype=list");
+					}
+
+				}
+				else if(document.getElementsByClassName('fc-day-header').item(1).dataset.date==undefined){
+					var URL_Serarch = new URLSearchParams(location.search);
+					if(URL_Serarch.get('lastVIewDate')!=null){
+						lastviewday =document.getElementsByClassName('fc-day-top').item(7).dataset.date;
+						history.replaceState('', '','index.php?module=Calendar&view='+ lastviewtype +'&lastVIewDate=' + lastviewday.substr(0, lastviewday.lastIndexOf('-')) + "&Viewtype=month");
+
+					}
+					
+				}
+				else if(document.getElementsByClassName('fc-day-header').item(1).dataset.date){
+					lastviewday =document.getElementsByClassName('fc-day-header').item(0).dataset.date;
+					history.replaceState('', '','index.php?module=Calendar&view='+ lastviewtype +'&lastVIewDate=' + lastviewday + "&Viewtype=week");
+				}
+
+
+
+
+			viewRender: function (view, element) {
+				var lastviewday;
+				var URL_Serarch_view = new URLSearchParams(location.search);
+				var lastviewtype = URL_Serarch_view.get('view');
+				if(document.getElementsByClassName('fc-day-header').item(1)==null){
+					if(document.getElementsByClassName('fc-day-header').item(0)){
+						lastviewday =document.getElementsByClassName('fc-day-header').item(0).dataset.date;
+						history.replaceState('', '','index.php?module=Calendar&view='+ lastviewtype +'&lastVIewDate=' + lastviewday + "&Viewtype=day");
+						
+					}
+					else{
+						history.replaceState('', '','index.php?module=Calendar&view='+ lastviewtype +'&lastVIewDate=' + "&Viewtype=list");
+					}
+
+				}
+				else if(document.getElementsByClassName('fc-day-header').item(1).dataset.date==undefined){
+					var URL_Serarch = new URLSearchParams(location.search);
+					if(URL_Serarch.get('lastVIewDate')!=null){
+						lastviewday =document.getElementsByClassName('fc-day-top').item(7).dataset.date;
+						history.replaceState('', '','index.php?module=Calendar&view='+ lastviewtype +'&lastVIewDate=' + lastviewday.substr(0, lastviewday.lastIndexOf('-')) + "&Viewtype=month");
+
+					}
+					
+				}
+				else if(document.getElementsByClassName('fc-day-header').item(1).dataset.date){
+					lastviewday =document.getElementsByClassName('fc-day-header').item(0).dataset.date;
+					history.replaceState('', '','index.php?module=Calendar&view='+ lastviewtype +'&lastVIewDate=' + lastviewday + "&Viewtype=week");
+				}
+
+
+lastViewDateとdefaultがurlに入ってくるとおかしな挙動になる可能性あり
+
+http://192.168.10.99/index.php?module=Calendar&view=Calendar
+http://192.168.10.99/index.php?module=Calendar&view=Calendar
+http://192.168.10.99/index.php?module=Calendar&view=SharedCalendar
+
+
+
+		var URL_Serarch = new URLSearchParams(location.search);
+		var URL_Serarch_PRE = new URLSearchParams(document.referrer);
+		if(location.href.match(/lastViewDate/)){
+			defaultDate=URL_Serarch.get('lastViewDate');
+		}else{
+			defaultView = userDefaultActivityView;
+			if(document.referrer.match(/lastViewDate/)){
+				defaultDate = URL_Serarch_PRE.get('lastViewDate');
+			}
+		}
+
+

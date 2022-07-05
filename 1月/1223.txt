@@ -1,0 +1,3 @@
+/home/kkanno/develop/F-RevoCRM/pkg/vtiger/modules/Import/templates/Import_Step4.tpl
+
+/home/kkanno/develop/F-RevoCRM/pkg/vtiger/modules/Import/layouts/v7/modules/Import/Import_Mapping.tpl

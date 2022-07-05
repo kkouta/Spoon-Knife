@@ -1,0 +1,25 @@
+| vtiger_calendar_default_activitytypes     |
+| vtiger_calendar_default_activitytypes_seq |
+| vtiger_calendar_user_activitytypes        |
+| vtiger_calendar_user_activitytypes_seq    |
+| vtiger_calendarsharedtype                 |
+| vtiger_calendarsharedtype_seq
+
+
+| vtiger_taskpriority                       |
+| vtiger_taskpriority_seq                   |
+| vtiger_taskstatus                         |
+| vtiger_taskstatus_seq
+
+| vtiger_activity                           |
+| vtiger_activity_recurring_info            |
+| vtiger_activity_reminder                  |
+| vtiger_activity_reminder_popup            |
+| vtiger_activity_view                      |
+| vtiger_activity_view_seq                  |
+| vtiger_activitycf                         |
+| vtiger_activityproductrel                 |
+| vtiger_activitytype                       |
+| vtiger_activitytype_seq
+
+vtiger_activity    がTODOリストの保存場所

@@ -1,0 +1,6 @@
+共有カレンダーの日から個人カレンダーに飛ぶと月の表示になってしまう。
+設定は個人の月
+http://192.168.10.99/index.php?module=Calendar&view=Calendar&lastViewDate=2022-05-01&Viewtype=SharedCalendar
+http://192.168.10.99/index.php?module=Calendar&view=Calendar&lastViewDate=2022-05&Viewtype=month
+http://192.168.10.99/index.php?module=Calendar&view=Calendar&lastViewDate=2022-05-01&Viewtype=SharedCalendar
+

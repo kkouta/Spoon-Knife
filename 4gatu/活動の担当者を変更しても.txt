@@ -1,0 +1,47 @@
+ vtiger_activity                           |
+| vtiger_activity_recurring_info            |
+| vtiger_activity_reminder                  |
+| vtiger_activity_reminder_popup            |
+| vtiger_activity_view                      |
+| vtiger_activity_view_seq                  |
+| vtiger_activitycf                         |
+| vtiger_activityproductrel                 |
+| vtiger_activitytype                       |
+| vtiger_activitytype_seq
+
+ vtiger_calendar_default_activitytypes     |
+| vtiger_calendar_default_activitytypes_seq |
+| vtiger_calendar_user_activitytypes        |
+| vtiger_calendar_user_activitytypes_seq
+
+次回はやることがなかったらカレンダーの表示のコンフリクトの主性を行う。
+
+vtiger_crmentityに活動の担当者などの情報が組み込まれていた。
+
+/home/kkanno/develop/F-RevoCRM/modules/Calendar/models/Record.php
+
+もしかしたら削除ではなくて表示のほうで変更する必要があるのかもしれない。
+修正者が最後に登録されなおされている
+登録のたびに消されていない
+変更した分だけ担当者が多くなってしまっている。
+
+
+最初にグループを担当にした後にシステム管理者以外を担当にするとシステム管理者もその活動が見れなくなってしまう。
+
+親クラスのsaveメゾットを呼び出している。
+ここを変更するのはあまりよろしくないから新しくコードを書くほうが賢明
+
+活動にグループを選択した時におかしな挙動をする。
+
+担当者を削除するときに１（システム管理者）以外かつ最終変更日が早いものを削除する。
+
+vtiger_crmentityのdeletedの値を1にするとリストに表示されないようにすることができる。
+
+
+update vtiger_crmentity set deleted = 0  where  crmid = '272';
+
+mysqlの接続の部分の理解をする。
+$abdか$dbの違いが判らない。あと普通にこのモジュールよくわからない。
+delete=1にできるように頑張る。
+
+$this->getId()で今の活動のcrmidが返ってくるからこの親のidからそこのdeleteを１に設定できればいい。

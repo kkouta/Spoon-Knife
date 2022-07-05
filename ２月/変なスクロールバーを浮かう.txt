@@ -1,0 +1,39 @@
+table-content
+ここが怪しい
+
+
+height:85vh;overflow:scroll
+
+
+#90やれそう
+製造業者を登録するところが見当たらない。
+
+/home/kkanno/develop/F-RevoCRM/include/ComboStrings.php
+
+<div id="table-content" class="table-container" style="padding-top:0px !important;height:75vh;">
+
+
+height:100%;max-height:70vh;
+
+
+.table-container {
+  width: 100%;
+  border: 1px solid #c1c1c1;
+  margin-top: 10px;
+  overflow-y: scroll;
+  scrollbar-width: 8px;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border-width: thin;
+}
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+.table-container::-webkit-scrollbar-track {
+  background: none;
+}
+.table-container::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #aaa;
+ }
+
+#426
